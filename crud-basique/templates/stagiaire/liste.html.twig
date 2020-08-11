@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page Liste{% endblock %}
+
+{% block body %}
+    <h1>Liste des stagiaires</h1>
+    {% if app.flashes('success') is not empty %}
+        <ul>
+            {% for message in app.flashes('success') %}
+                <li class="text-success alert alert-success">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <p>
+        <a href="{{ path('stagiaire_edit') }}" class="add-stagiaire"><i class="fas fa-plus-circle"></i></a>
+    </p>
+    <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Prenom</th>
+            <th>Date de naissance</th>
+            <th>Email</th>
+            <th>Code Postal</th>
+            <th>Ville</th>
+            <th colspan="2">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if stagiaires is empty %}
+            <tr>
+                <td class="stagiaire-empty" colspan="8">Aucun enregistrement en BDD</td>
+            </tr>
+        {% else %}
+            {% for stagiaire in stagiaires %}
+                <tr>
+                    <td>{{ stagiaire.id }}</td>
+                    <td>{{ stagiaire.prenom }}</td>
+                    <td>{{ stagiaire.ddn | format_date('medium', locale='fr') }}</td>
+                    <td>{{ stagiaire.email }}</td>
+                    <td>{{ stagiaire.adresse.codePostale }}</td>
+                    <td>{{ stagiaire.adresse.ville }}</td>
+                    <td>
+                        <a class="text-info" href="{{ path('stagiaire_edit', {id: stagiaire.id}) }}" title="Modifier">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ path('stagiaire_delete', {id: stagiaire.id}) }}" title="Supprimer" class="text-danger">
+                            <i class="fas fa-minus-circle"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

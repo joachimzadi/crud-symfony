@@ -1,0 +1,68 @@
+@import url(https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Nanum+Gothic&display=swap);
+
+* {
+  box-sizing: border-box;
+}
+
+.table {
+  thead {
+    th {
+      padding: 1.2rem;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+
+  tr {
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+  }
+
+  td {
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  .stagiaire-empty {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #ffab00;
+    font-weight: bold;
+  }
+}
+
+.add-stagiaire {
+  font-size: 3.5rem;
+}
+
+.form-group {
+  .form-control {
+    border-radius: 0;
+  }
+}
+
+.edit-stagiaire {
+  margin: 5rem auto;
+  width: 40%;
+  border: 1px solid #dee2e6;
+
+  h3 {
+    text-align: center;
+    font-family: 'Bungee Inline', cursive;
+    color: white;
+    background-color: #0277bd;
+    padding: .7rem;
+  }
+
+  form {
+    margin: 1.5rem;
+  }
+}
+
+.btn {
+  border-radius: 0;
+  padding: .6rem;
+}
+
+.modifier {
+  font-size: 3.5rem;
+}

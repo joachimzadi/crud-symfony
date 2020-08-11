@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="edit-stagiaire">
+        <h3>{{ titre }}</h3>
+        <form method="post" action="{{ path('stagiaire_merge') }}">
+            <input type="hidden" name="id" value="{{ id }}">
+            <div class="form-group">
+                <input type="text" placeholder="Votre prénom" class="form-control"
+                       id="prenom" name="prenom" value="{{ stagiaire.prenom }}">
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Votre email de contact" class="form-control"
+                       id="email" name="email"  value="{{ stagiaire.email }}" >
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" name="ddn"
+                       id="ddn" value="{{ stagiaire.ddn | date('d/m/Y', false) }}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="codePostal" name="codePostal"
+                       placeholder="Votre code postal"  value="{{ stagiaire.adresse.codePostale }}" >
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="ville" name="ville"
+                       value="{{ stagiaire.adresse.ville }}" placeholder="Votre ville de residence">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+
+{% endblock %}
+
+{% block title %}
+    Edit Employé
+{% endblock %}
+
